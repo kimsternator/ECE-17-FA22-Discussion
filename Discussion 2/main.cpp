@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <numeric>
+#include <algorithm>
+#include <random>
 
 #include "Card.hpp"
 
@@ -21,19 +23,72 @@ string printBool(bool aBool) {
 }
 
 double findMean(vector<int> aVec) {
-    return 0.0;
+    // list of numbers - mean
+//    // Iteration approach
+//    for (auto it = aVec.begin(); it != aVec.end(); it++) {}
+//    // Range
+//    for (auto val : aVec) {}
+    // Index
+    double sum = 0.0;
+    for (size_t i = 0; i < aVec.size(); i++) {
+        sum += aVec[i];
+    }
+    // Runtime polymorphism
+
+    return sum / aVec.size();
 }
 
 int findMode(vector<int> aVec) {
-    return -1;
+    // 1 2 3 3 - 3
+    int maxElement = 0, maxFreq = 0;
+    for (int i = 0; i < aVec.size(); i++) {
+        int count = 0;
+        for (int j = 0; j < aVec.size(); j++) {
+            if (i == j) {
+                continue;
+            }
+            if (aVec[i] == aVec[j]) {
+                count++;
+            }
+        }
+        if (maxFreq < count) {
+            maxElement = aVec[i];
+            maxFreq = count;
+        }
+    }
+    return maxElement;
 }
 
+// Pass-by-value
 bool containsNumber(vector<int> aVec, int aNum) {
+    for (auto val : aVec) {
+        if (val == aNum) {
+            return true;
+        }
+    }
     return false;
 }
 
-void shuffleVector(vector<int> &aVec) {
+void swap(vector<int> &aVec, size_t i1, size_t i2) {
+    int temp = aVec[i1];
+    aVec[i1] = aVec[i2];
+    aVec[i2] = temp;
+}
 
+// Pass-by-reference
+void shuffleVector(vector<int> &aVec) {
+    /* Iterate over the vector
+     * swap current index with a random index
+     * {0, .., size - 1}
+    */
+//    for (size_t i = 0; i < aVec.size(); i++) {
+//        size_t randomIndex = rand() % aVec.size();
+//        swap(aVec, i, randomIndex);
+//    }
+
+    srand(NULL);
+    auto rng = std::default_random_engine {};
+    std::shuffle(std::begin(aVec), std::end(aVec), rng);
 }
 
 void cardExamples() {
@@ -56,6 +111,15 @@ int main(int argc, const char * argv[]) {
         cardExamples();
     }
     return 0;
+}
+
+void example() {
+    vector<Suits> suits = {Suits::diamonds, Suits::spades, Suits::hearts, Suits::clubs};
+    for (int face = (int) Faces::two; face <= (int) Faces::ace; face++) {
+        for (Suits suit : suits) {
+            cout << face << " " << (char) suit << endl;
+        }
+    }
 }
 
 template <typename T>
