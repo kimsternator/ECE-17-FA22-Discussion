@@ -51,7 +51,7 @@ void templateFunc(T aVal, float aFloat) {
 
 template<typename T1, typename T2>
 void templateFunc(T1 aVal, T2 anotherVal) {
-	cout << "Double Template Function" << endl;
+	cout << "Default Template x2 Function" << endl;
 }
 
 // ****************************************************
@@ -76,13 +76,13 @@ void funcExample() {
 }
 
 void templateFuncExample() {
-	templateFunc("");
-	templateFunc(1);
-	templateFunc(1.0);
-	templateFunc(1.0f);
+//	templateFunc("");
+//	templateFunc(1);
+//	templateFunc(1.0);
+//	templateFunc(1.0f);
 
-//	templateFunc("", 1);
-//	templateFunc("", 1.0f);
-//	templateFunc("", 1.0);
-//	templateFunc("", "");
+	templateFunc("", 1);
+	templateFunc("", 1.0f);
+	templateFunc("", 1.0);
+	templateFunc("", "");
 }
