@@ -1,0 +1,2 @@
+This is some text. Here are some repeating words.
+word word word word word word word word
