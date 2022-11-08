@@ -24,11 +24,6 @@ int main(int argc, char *argv[]) {
 	if (argc <= 1) {
 		return 0;
 	}
-
-	Matrix theMatrix({{1.0, 2.0, 3.0},
-							{4.0, 5.0, 6.0},
-							{7.0, 8.0, 9.0},
-							{10.0, 11.0, 12.0}});
 	argumentFunctions[argv[1]]();
 	return 0;
 }
@@ -47,25 +42,25 @@ void multiplyExample() {
 							  {3.0, 4.0},
 							  {5.0, 6.0}});
 	cout << theMatrix << endl;
-	cout << theMatrix.multiply(theMatrix) << endl;
+	cout << theMatrix.multiply(theMatrix.transpose()) << endl;
 }
 
 void determinantExample() {
-	Matrix theMatrix({{1.0, 2.0},
-					 		{3.0, 4.0}});
+//	Matrix theMatrix({{1.0, 2.0},
+//					 		{3.0, 4.0}});
 //	Matrix theMatrix({{1.0, 2.0, 3.0},
 //					  		{4.0, 5.0, 6.0},
 //					  		{7.0, 8.0, 9.0}});
-//	Matrix theMatrix({{1.0, 2.0, 3.0},
-//							  {4.0, 5.0, 6.0},
-//							  {7.0, 8.0, 9.0},
-//							  {10.0, 11.0, 12.0}});
+	Matrix theMatrix({{1.0, 2.0, 3.0, 4.0},
+							  {5.0, 6.0, 7.0, 8.0},
+							  {9.0, 10.0, 11.0, 12.0},
+							  {13.0, 14.0, 15.0, 16.0}});
 	cout << theMatrix << endl;
 	cout << theMatrix.determinant() << endl;
 }
 
 void tocsvExample() {
-	String filepath(R"(S:\Documents\TA\ECE 17\FA22\ECE-17-FA22-Discussion\Discussion 7\matrix.csv)");
+	String filepath(R"(C:\Users\steph\Documents\Class\TA\ECE 17\FA22\ECE-17-FA22-Discussion\Discussion 7\matrix.csv)");
 	Matrix theMatrix({{1.0, 2.0, 3.0},
 					  {4.0, 5.0, 6.0},
 					  {7.0, 8.0, 9.0},
@@ -75,6 +70,6 @@ void tocsvExample() {
 }
 
 void fromcsvExample() {
-	String filepath(R"(S:\Documents\TA\ECE 17\FA22\ECE-17-FA22-Discussion\Discussion 7\matrix.csv)");
+	String filepath(R"(C:\Users\steph\Documents\Class\TA\ECE 17\FA22\ECE-17-FA22-Discussion\Discussion 7\matrix.csv)");
 	cout << Matrix::fromCSV(filepath) << endl;
 }

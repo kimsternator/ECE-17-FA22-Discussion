@@ -1,2 +1,10 @@
 This is some text. Here are some repeating words.
 word word word word word word word word
+
+Number Encoding
+
+word - 0
+This is some text. Here are some repeating 0s.
+0 0 0 0 0 0 0 0
+
+Huffman Tree (Challenge)
